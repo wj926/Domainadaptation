@@ -135,54 +135,5 @@ with tf.Session() as sess:
             print ("Accuracy:", accr.eval({x:test_x, y: test_y}))        
             print ("Optimization Finished!")
 
-"""
-# Launch the graph
-init = tf.initialize_all_variables()
-print ("Network constructed")
 
-with tf.Session() as sess:
-    sess.run(init)
-    # Training cycle
-    for epoch in range(training_epochs):
-        sess.run(optm, feed_dict={x: train_x, y: train_y})
-    tp = sess.run(actv, feed_dict={x:test_x})    
-        #Display logs per epoch step
-        #if epoch % 2 == 0:
-            #print(avg_cost)
-            
-    print ("Optimization Finished!")
-"""
-#accuracy
-   
-for i in range(len(tp)):
-        if tp[i] >= 0.5:
-            tp[i] = 1
-        else :
-            tp[i] = 0
-    
-qwe = np.zeros((len(tp),1))
-    
-for i in range(len(tp)):
-    qwe[i,0] = test_y[i]
-        
-right = 0.
-for i in range(len(tp)):
-        if qwe[i,0] == tp[i,0]:
-            right = right +1
-    
-accu = right/len(tp)
-accu
 
-#test
-act = 1/(1+ np.exp(-((np.matmul(xxx,aa) + bb))))
-ccc = (yyy*np.log(act) + (1-yyy)*np.log(1-act))
-cost11 = -np.sum(ccc)/(200*200)
-cost22 = np.linalg.norm(aa)
-cost22*0.001 + cost11
-
-#svm test
-clf = svm.SVC(C=100, gamma=0.01, kernel='rbf')
-clf.fit(train_x, train_y)
-print 'test phase'
-predicts = clf.predict(test_x)
-print accuracy_score(test_y, predicts)
